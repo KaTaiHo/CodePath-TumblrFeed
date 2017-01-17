@@ -22,7 +22,7 @@ class PhotoDetailsViewController: UIViewController {
         
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
         if let summary = info["reblog"] as? NSDictionary {
-            if let content = summary["comment"] as? String {
+            if var content = summary["comment"] as? String {
                 summaryText.text = content
                 summaryText.sizeToFit()
             }
@@ -46,6 +46,7 @@ class PhotoDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
         
     }
+    
     
 
     /*

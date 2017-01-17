@@ -109,20 +109,13 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         
         let post = posts[(indexPath?.row)!]
         vc.info = post
-        
-        
-//        let cell = sender as! UITableViewCell
-//        let indexPath = tableView.indexPath(for: cell)
-//        let movie = movies![indexPath!.row]
-//        
-//        let detailViewController = segue.destination as! DetailViewController
-//        
-//        detailViewController.movie = movie
+
         
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
     }
+    
     
     /*
     // MARK: - Navigation
