@@ -50,6 +50,11 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.updateData), for: UIControlEvents.valueChanged)
+        // add refresh control to table view
+        tableView.insertSubview(refreshControl, at: 0)
         updateData()
         // Do any additional setup after loading the view.
     }
@@ -71,6 +76,10 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
 //        if let date = post["date"] as? String {
 //            cell.title.text = date
 //        }
+        if let timeStamp = post["timestamp"] as? Double {
+            var date = NSDate(timeIntervalSince1970: timeStamp) as? Date
+            cell.timeStampLabel.text = Date().offset(from: date!) + " ago"
+        }
         
         if let photos = post["photos"] as? [NSDictionary] {
             // photos is NOT nil, go ahead and access element 0 and run the code in the curly braces
@@ -78,20 +87,43 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
             if let imageUrl = URL(string: imageUrlString!) {
                 // URL(string: imageUrlString!) is NOT nil, go ahead and unwrap it and assign it to imageUrl and run the code in the curly braces
                 cell.PhotoImageView.setImageWith(imageUrl)
-                print ("changing photo")
+                //print ("changing photo")
             } else {
                 // URL(string: imageUrlString!) is nil. Good thing we didn't try to unwrap it!
-                print ("not changing photo")
+                //print ("not changing photo")
             }
-            print("hello?")
+            //print("hello?")
         } else {
             // photos is nil. Good thing we didn't try to unwrap it!
-            print ("post fucked")
+            //print ("post fucked")
         }
         
         return cell
     }
+    
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! PhotoDetailsViewController
+        var indexPath = tableView.indexPath(for: sender as! UITableViewCell)
+        tableView.deselectRow(at: indexPath!, animated:true)
+        
+        let post = posts[(indexPath?.row)!]
+        vc.info = post
+        
+        
+//        let cell = sender as! UITableViewCell
+//        let indexPath = tableView.indexPath(for: cell)
+//        let movie = movies![indexPath!.row]
+//        
+//        let detailViewController = segue.destination as! DetailViewController
+//        
+//        detailViewController.movie = movie
+        
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+    }
+    
     /*
     // MARK: - Navigation
 

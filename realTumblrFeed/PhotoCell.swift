@@ -12,6 +12,7 @@ class PhotoCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var PhotoImageView: UIImageView!
+    @IBOutlet weak var timeStampLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
