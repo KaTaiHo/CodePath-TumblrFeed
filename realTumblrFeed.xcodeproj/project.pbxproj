@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		382D9BBA993742888B3908E6 /* Pods_realTumblrFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03DAD8F802B3E542C5811C2 /* Pods_realTumblrFeed.framework */; };
+		4B75BEF31E2D951000A689F1 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75BEF21E2D951000A689F1 /* PhotosViewController.swift */; };
+		4B75BEF51E2D9FBC00A689F1 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75BEF41E2D9FBC00A689F1 /* PhotoCell.swift */; };
 		4BB5C9C21E2B3B3E006EACA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB5C9C11E2B3B3E006EACA2 /* AppDelegate.swift */; };
-		4BB5C9C41E2B3B3E006EACA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB5C9C31E2B3B3E006EACA2 /* ViewController.swift */; };
 		4BB5C9C71E2B3B3E006EACA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB5C9C51E2B3B3E006EACA2 /* Main.storyboard */; };
 		4BB5C9C91E2B3B3E006EACA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB5C9C81E2B3B3E006EACA2 /* Assets.xcassets */; };
 		4BB5C9CC1E2B3B3E006EACA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB5C9CA1E2B3B3E006EACA2 /* LaunchScreen.storyboard */; };
@@ -17,9 +18,10 @@
 
 /* Begin PBXFileReference section */
 		16CB392FCA91D3B0135B761F /* Pods-realTumblrFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realTumblrFeed.release.xcconfig"; path = "Pods/Target Support Files/Pods-realTumblrFeed/Pods-realTumblrFeed.release.xcconfig"; sourceTree = "<group>"; };
+		4B75BEF21E2D951000A689F1 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		4B75BEF41E2D9FBC00A689F1 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		4BB5C9BE1E2B3B3E006EACA2 /* realTumblrFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = realTumblrFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB5C9C11E2B3B3E006EACA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4BB5C9C31E2B3B3E006EACA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4BB5C9C61E2B3B3E006EACA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4BB5C9C81E2B3B3E006EACA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BB5C9CB1E2B3B3E006EACA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,11 +73,12 @@
 			isa = PBXGroup;
 			children = (
 				4BB5C9C11E2B3B3E006EACA2 /* AppDelegate.swift */,
-				4BB5C9C31E2B3B3E006EACA2 /* ViewController.swift */,
 				4BB5C9C51E2B3B3E006EACA2 /* Main.storyboard */,
 				4BB5C9C81E2B3B3E006EACA2 /* Assets.xcassets */,
 				4BB5C9CA1E2B3B3E006EACA2 /* LaunchScreen.storyboard */,
 				4BB5C9CD1E2B3B3E006EACA2 /* Info.plist */,
+				4B75BEF21E2D951000A689F1 /* PhotosViewController.swift */,
+				4B75BEF41E2D9FBC00A689F1 /* PhotoCell.swift */,
 			);
 			path = realTumblrFeed;
 			sourceTree = "<group>";
@@ -211,8 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BB5C9C41E2B3B3E006EACA2 /* ViewController.swift in Sources */,
 				4BB5C9C21E2B3B3E006EACA2 /* AppDelegate.swift in Sources */,
+				4B75BEF51E2D9FBC00A689F1 /* PhotoCell.swift in Sources */,
+				4B75BEF31E2D951000A689F1 /* PhotosViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +378,7 @@
 				4BB5C9D21E2B3B3E006EACA2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
