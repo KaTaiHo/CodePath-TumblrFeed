@@ -13,6 +13,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     var posts: [NSDictionary] = []
     var isMoreDataLoading = false
+    var loadingMoreView:InfiniteScrollActivityView?
     
     func updateData() {
         let url = URL(string:"https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/posts/photo?api_key=Q6vHoaVm5L1u2ZAW1fqv3Jw48gFzYVg9P0vH0VHl3GVy6quoGV")
@@ -57,6 +58,15 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         // add refresh control to table view
         tableView.insertSubview(refreshControl, at: 0)
         updateData()
+        
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+        var insets = tableView.contentInset;
+        insets.bottom += InfiniteScrollActivityView.defaultHeight;
+        tableView.contentInset = insets
         // Do any additional setup after loading the view.
     }
 
@@ -78,7 +88,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
 //            cell.title.text = date
 //        }
         if let timeStamp = post["timestamp"] as? Double {
-            var date = NSDate(timeIntervalSince1970: timeStamp) as? Date
+            let date = NSDate(timeIntervalSince1970: timeStamp) as? Date
             cell.timeStampLabel.text = Date().offset(from: date!) + " ago"
         }
         
@@ -126,21 +136,16 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
             // When the user has scrolled past the threshold, start requesting
             if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
                 isMoreDataLoading = true
+                
+                let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
                 updateData()
                 isMoreDataLoading = false
+                
                 // ... Code to load more results ...
             }
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
